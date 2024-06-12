@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Barang;
 
 class SearchController extends Controller
 {
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $results = Kategori::search($query); // Use the search method from the model
+        
+        // Search in Barang
+        $barangs = Barang::search($query);
 
-        return view('v_kategori.relasi', ['rsetKategori' => $results]);
+        // Search in Kategori
+        $kategoris = Kategori::search($query);
+
+        // Return results to a combined view
+        return view('search.index', ['barangs' => $barangs, 'kategoris' => $kategoris]);
     }
+
 
 }

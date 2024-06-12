@@ -1,7 +1,16 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
 
 @section('content')
     <div class="container">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <h2>Daftar Barang Masuk</h2>
 
         <a href="{{ route('barangmasuk.create') }}" class="btn btn-success mb-3">Tambah Barang Masuk</a>

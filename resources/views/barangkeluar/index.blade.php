@@ -1,4 +1,4 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
 
 @section('content')
     <div class="container">
@@ -35,7 +35,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5">Tidak ada data barang keluar.</td>
+                        <td colspan="5">Tidak ada data barang masuk.</td>
                     </tr>
                 @endforelse
             </tbody>

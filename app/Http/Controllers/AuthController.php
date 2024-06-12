@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function register()
     {
-        return view('authentication.register');
+        return view('register.register');
     }
  
     public function registerPost(Request $request)
@@ -24,12 +24,13 @@ class AuthController extends Controller
  
         $user->save();
  
-        return back()->with('success', 'Register successfully');
+        // return back()->with('success', 'Register successfully');
+        return redirect('login')->with('success', 'Login Success');
     }
  
     public function login()
     {
-        return view('authentication.login');
+        return view('register.login');
     }
  
     public function loginPost(Request $request)

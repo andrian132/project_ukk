@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('kategori',['M','A','BHP','BTHP'])->default('A');
             $table->timestamps();
         });
+
     }
 
     /**

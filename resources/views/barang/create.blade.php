@@ -1,31 +1,23 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="pull-left">
-                    <h2>TAMBAH BARANG</h2>
-                </div>
+		<div class="pull-left">
+		    <h2>TAMBAH BARANG</h2>
+		</div>
                 <div class="card">
                     <div class="card-body">
-                        <!-- Menampilkan semua pesan error -->
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                         <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">                    
                             @csrf
 
@@ -41,6 +33,7 @@
                                 @enderror
                             </div>
 
+
                             <div class="form-group">
                                 <label class="font-weight-bold">SERI</label>
                                 <input type="text" class="form-control @error('seri') is-invalid @enderror" name="seri" value="{{ old('seri') }}" placeholder="Masukkan Seri Barang">
@@ -52,6 +45,7 @@
                                     </div>
                                 @enderror
                             </div>
+
 
                             <div class="form-group">
                                 <label class="font-weight-bold">SPESIFIKASI</label>
@@ -65,26 +59,26 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+
+                            <!-- <div class="form-group">
                                 <label class="font-weight-bold">STOK</label>
-                                <input type="text" class="form-control @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok') }}" placeholder="Masukkan Stok Barang">
+                                <input type="text" class="form-control @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok') }}" placeholder="Masukkan Stok Barang"> -->
                            
                                 <!-- error message untuk stok -->
-                                @error('stok')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                <!-- @error('stok') -->
+                                    <!-- <div class="alert alert-danger mt-2"> -->
+                                        <!-- {{ $message }} -->
+                                    <!-- </div> -->
+                                <!-- @enderror -->
+                            <!-- </div> -->
+
 
                             <div class="form-group">
                                 <label class="font-weight-bold">KATEGORI</label>
-                                <select class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id" aria-label="Default select example">
+                                <select class="form-control" name="kategori_id" aria-label="Default select example">
                                     <option value="blank">Pilih Kategori</option>
                                     @foreach ($akategori as $rowkategori)
-                                        <option value="{{ $rowkategori->id }}" {{ old('kategori_id') == $rowkategori->id ? 'selected' : '' }}>
-                                            {{ $rowkategori->deskripsi }}
-                                        </option>
+                                        <option value="{{ $rowkategori->id  }}">{{ $rowkategori->deskripsi  }}</option>
                                     @endforeach
                                 </select>
                                
@@ -95,6 +89,7 @@
                                     </div>
                                 @enderror
                             </div>
+
 
                             <div class="form-group">
                                 <label class="font-weight-bold">FOTO</label>
@@ -110,6 +105,11 @@
 
                             <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                            <div class="row">
+                                <div class="col-md-12  text-center">
+                                    <a href="{{ route('barang.index') }}" class="btn btn-md btn-primary mb-3">Back</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

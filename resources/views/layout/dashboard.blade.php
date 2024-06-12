@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GuruKoding</title>
+    <title>SIVENT</title>
 
     <!-- Custom fonts for this template-->
     <link href="{!! asset('theme/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">
@@ -19,10 +19,13 @@
 
     <!-- Custom styles for this template-->
     <link href="{!! asset('theme/css/sb-admin-2.min.css') !!}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 </head>
 
 <body id="page-top">
+
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -35,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">NEWBIEKoding</div>
+                <div class="sidebar-brand-text mx-3">SIVENT.TEST</div>
             </a>
 
             <!-- Divider -->
@@ -50,32 +53,49 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                TABEL
             </div>
-
+            
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                    <span>DAFTAR</span>
+            <li class="nav-item active">
+                <a class="nav-link" href="kategori">
+                    <i class="fa fa-user-circle"></i>
+                    <span>Kategori</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="../kategori">Kategori</a>
-                        <a class="collapse-item" href="../barang">Barang</a>
-                        <a class="collapse-item" href="../siswa">Siswa</a>
-                        <a class="collapse-item" href="../barangmasuk">BarangMasuk</a>
-                        <a class="collapse-item" href="../barangkeluar">BarangKeluar</a>
-                    </div>
-                </div>
+            </li>
+            
+            <hr class="sidebar-divider my-0">
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="barang">
+                    <i class="fa fa-user-circle"></i>
+                    <span>Barang</span>
+                </a>
             </li>
 
-       
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="siswa">
+                    <i class="fa fa-user-circle"></i>
+                    <span>Siswa</span>
+                </a>
+            </li> -->
+
+            <li class="nav-item active">
+                <a class="nav-link" href="barangmasuk">
+                    <i class="fa fa-user-circle"></i>
+                    <span>Barang Masuk</span>
+                </a>
+            </li>
+           
+            <li class="nav-item active">
+                <a class="nav-link" href="barangkeluar">
+                    <i class="fa fa-user-circle"></i>
+                    <span>Barang Keluar</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -102,19 +122,18 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form action="{{ route('search') }}" method="GET" class="mb-3">
-            <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="searchInput" name="query" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-    </form>
+                    <form action="{{ route('search') }}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" name="query" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
 
-                    <!-- Topbar Navbar -->
+
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -264,9 +283,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{!! asset('theme/img/undraw_profile.svg') !!}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -283,40 +302,45 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
+                                
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
+                                    
                                 </a>
+                                
                             </div>
                         </li>
 
                     </ul>
+
+                    <!-- Topbar Navbar -->
+                    
 
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Logout</button>
+                        
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Logout</button>
                         </form>
-                        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                        
                     </div>
-                <!-- <div class="container-fluid"> -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <!-- <h1 class="h3 mb-0 text-gray-800">Siswa SIJA</h1> -->
-                        <!-- <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search"> -->
-                    <!-- <div class="container"> -->
+
+                    
+                    <div class="container">
                         @yield('content')
-                    <!-- </div> -->
                     </div>
+                  
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -324,13 +348,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <!-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- End of Footer -->
 
         </div>

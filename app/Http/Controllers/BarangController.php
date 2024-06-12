@@ -1,16 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Kategori;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 class BarangController extends Controller
 {
     use ValidatesRequests;
-	public function index(Request $request)
+    public function index(Request $request)
     {
         $rsetBarang = Barang::with('kategori')->latest()->paginate(10);
 
@@ -43,12 +47,7 @@ class BarangController extends Controller
             'foto'          => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ]);
-
-        //upload image
-        $foto = $request->file('foto');
-        $foto->storeAs('public/foto', $foto->hashName());
-
-        // barangsamaerror
+        
         $existingBarang = Barang::where('merk', $request->merk)
                             ->where('seri', $request->seri)
                             ->where('spesifikasi', $request->spesifikasi)
@@ -58,6 +57,10 @@ class BarangController extends Controller
             // Redirect back with an error message
             return redirect()->back()->withErrors(['error' => 'Barang dengan merk, seri, dan spesifikasi yang sama sudah ada.']);
         }
+
+        //upload image
+        $foto = $request->file('foto');
+        $foto->storeAs('public/foto_barang', $foto->hashName());
 
         //create post
         Barang::create([
@@ -119,10 +122,10 @@ class BarangController extends Controller
 
             //upload new image
             $foto = $request->file('foto');
-            $foto->storeAs('public/foto', $foto->hashName());
+            $foto->storeAs('public/foto_barang', $foto->hashName());
 
             //delete old image
-            Storage::delete('public/foto/'.$rsetBarang->foto);
+            Storage::delete('public/foto_barang/'.$rsetBarang->foto);
 
             //update post with new image
             $rsetBarang->update([
@@ -155,19 +158,14 @@ class BarangController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    
     {
-        try {
-            $barang = Barang::findOrFail($id);
-            $barang->delete();
+        $rsetBarang = Barang::find($id);
 
-            return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus');
-            }   catch (\Exception $e) {
-            return redirect()->route('barang.index')->with('error', 'Barang tidak dapat dihapus: ');
-        }
+        //delete post
+        $rsetBarang->delete();
+
+        //redirect to index
+        return redirect()->route('barang.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
-
-
-
 
 }

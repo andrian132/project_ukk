@@ -1,7 +1,8 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
+
 
 @section('content')
-<div class="container">
+    <div class="container">
         <div class="pull-left">
             <h2>TAMPILKAN BARANG</h2>
         </div>
@@ -27,6 +28,10 @@
                             </tr>
                             </tr>
                                 <td>KATEGORI</td>
+                                <td>{{ $rsetBarang->kategori->kategori }}</td>
+                            </tr>
+                            </tr>
+                                <td>Deskripsi</td>
                                 <td>{{ $rsetBarang->kategori->deskripsi }}</td>
                             </tr>
                         </table>
@@ -34,14 +39,14 @@
                 </div>
             </div>
 
-            <!-- <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <img src="{{ asset('storage/foto/'.$rsetBarang->foto) }}" class="w-100 rounded">
+                        <img src="{{ asset('storage/foto_barang/'.$rsetBarang->foto) }}" class="w-100 rounded">
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <br>
         <div class="row">
@@ -50,4 +55,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

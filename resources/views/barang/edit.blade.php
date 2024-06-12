@@ -1,4 +1,5 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
+
 
 @section('content')
 <div class="container">
@@ -51,15 +52,15 @@
 
                             <!-- <div class="form-group">
                                 <label class="font-weight-bold">STOK</label>
-                                <input type="text" class="form-control @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok',$rsetBarang->stok) }}" placeholder="Masukkan Stok Barang">
+                                <input type="text" class="form-control @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok',$rsetBarang->stok) }}" placeholder="Masukkan Stok Barang"> -->
                            
-                                error message untuk stok
-                                @error('stok')
+                                <!-- error message untuk stok -->
+                                <!-- @error('stok')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
-                                    </div> -->
-                                <!-- @enderror -->
-                            <!-- </div> -->
+                                    </div>
+                                @enderror
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="font-weight-bold">KATEGORI</label>
@@ -68,7 +69,7 @@
                                         @if ($selectedKategori && $selectedKategori->id == $kategori->id)
                                             <option value="{{ $kategori->id }}" selected>{{ $kategori->kategori }}</option>
                                         @else
-                                            <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                                            <option value="{{ $kategori->id }}">{{ $kategori->deskripsi }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -102,4 +103,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

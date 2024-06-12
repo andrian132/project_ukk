@@ -21,8 +21,12 @@ return new class extends Migration
             $table->foreign('kategori_id')->references('id')->on('kategori')
                   ->onUpdate('cascade')
                   ->onDelete('restrict');
+            $table->string('foto')
+                  ->nullable()
+                  ->default(NULL);      
             $table->timestamps();
         });
+
     }
 
     /**

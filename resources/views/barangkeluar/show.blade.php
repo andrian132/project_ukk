@@ -1,13 +1,13 @@
-@extends('layouts.adm-main')
+@extends('layout.dashboard')
 
 @section('content')
     <div class="container">
-        <h1>Detail Barang Keluar</h1>
+        <h1>Detail Barang keluar</h1>
         
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Tanggal Keluar: {{ $barangkeluar->tgl_keluar }}</h5>
-                <p class="card-text">Jumlah Keluar: {{ $barangkeluar->qty_keluar }}</p>
+                <h5 class="card-title">Tanggal keluar: {{ $barangkeluar->tgl_keluar }}</h5>
+                <p class="card-text">Jumlah keluar: {{ $barangkeluar->qty_keluar }}</p>
                 
                 <h5 class="mt-4">Detail Barang</h5>
                 <ul>

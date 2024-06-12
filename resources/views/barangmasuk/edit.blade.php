@@ -1,6 +1,4 @@
-@extends('layouts.adm-main')
-
-
+@extends('layout.dashboard')
 
 @section('content')
     <div class="container">
